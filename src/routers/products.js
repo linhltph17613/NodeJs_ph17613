@@ -1,18 +1,15 @@
 import { Router } from "express";
+import { create, list, remove, update } from "../../controllers/products";
 const router = Router();
-const checkAuth = (req, res, next) => {
-    const isAdmin = true;
-    if (isAdmin) {
-        next();
-    } else {
-        console.log('bai bai');
-    }
-}
-router.get('/products', checkAuth, (req, res) => {
-    const data = [
-        { id: 1, name: "Product A" },
-        { id: 2, name: "Product B" },
 
-    ]
-})
+
+
+
+
+router.get('/products', checkAuth, list)
+
+router.post('/products', checkAuth, create);
+router.get('/product/:id', checkAuth,)
+router.delete('/product/:id', checkAuth, remove)
+router.put('/product/:id', checkAuth, update)
 export default router;
