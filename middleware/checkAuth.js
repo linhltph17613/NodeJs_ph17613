@@ -6,3 +6,4 @@ const checkAuth = (req, res, next) => {
         console.log('bai bai');
     }
 }
+export default checkAuth;
