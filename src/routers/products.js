@@ -1,6 +1,6 @@
 import { Router } from "express";
-import checkAuth from "../../middleware/checkAuth"
-import { create, getAll, list, remove, update } from "../../controllers/products";
+import checkAuth from "../middleware/checkAuth"
+import { create, getAll, list, remove, update } from "../controllers/products";
 const router = Router();
 
 
