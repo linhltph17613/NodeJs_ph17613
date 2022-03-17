@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
-const Product = mongoose.model('Product', { name: String });
-
+import producSchema from '../models/product'
 //kake data
 // const data = [
 //     { id: 1, name: "product 1" },
@@ -14,7 +13,7 @@ export const create = async (req, res) => {
     // console.log(data);
     // res.json(data);
     try {
-        const product = await new Product(req.body).save();
+        const product = await new producSchema(req.body).save();
         res.json(product)
     } catch (error) {
         res.status(400).json({

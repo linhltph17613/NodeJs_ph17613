@@ -1,12 +1,12 @@
 import express from "express";
 import cors from 'cors';
-import productRouter from './routers/products';
-import userRouter from './routers/user';
-
 import morgan from "morgan";
 import mongoose from "mongoose";
-import { readdirSync } from 'fs';
-import path, { dirname } from 'path';
+
+
+import productRouter from './routers/products';
+import userRouter from './routers/user';
+import categoryRouter from "./routers/category";
 
 
 
@@ -21,6 +21,8 @@ app.use(express.json())
 // readdirSync(`${__dirname}/routers`).map(file => app.use("/api", require(`./routers/${file}`)))
 app.use("/api", productRouter)
 app.use("/api", userRouter)
+app.use("/api", categoryRouter)
+
 
 // readdirSync(__dirname + "/routes").forEach((fileName) => {
 //     import("./routes/" + fileName)
