@@ -24,7 +24,7 @@ export const create = async (req, res) => {
 }
 export const list = async (req, res) => {
     try {
-        const product = await Product.find({}).exec();
+        const product = await producSchema.find({}).exec();
         res.json(product)
     } catch (error) {
         res.status(400).json({
@@ -36,7 +36,7 @@ export const getAll = async (req, res) => {
 
     // res.json(data.find(item => item.id == req.params.id))
     try {
-        const product = await Product.findOne({ _id: req.params.id }).exec();
+        const product = await producSchema.findOne({ _id: req.params.id }).exec();
         res.json(product);
     } catch (error) {
         res.status(400).json({
@@ -48,7 +48,7 @@ export const remove = async (req, res) => {
 
     // res.json(data.filter(item => item.id != req.params.id))
     try {
-        const product = await Product.findOneAndDelete({ _id: req.params.id }).exec();
+        const product = await producSchema.findOneAndDelete({ _id: req.params.id }).exec();
         res.json(product);
     } catch (error) {
         res.status(400).json({
@@ -63,7 +63,7 @@ export const update = async (req, res) => {
     const condition = { id: req.params.id }
     const update = req.body;
     try {
-        const product = await Product.findOneAndUpdate({ condition, update }).exec();
+        const product = await producSchema.findOneAndUpdate({ condition, update }).exec();
         res.json(product);
     } catch (error) {
         res.status(400).json({
