@@ -36,7 +36,7 @@ app.use("/api", categoryRouter)
 mongoose.connect("mongodb://localhost:27017/we16310")
     .then(() => console.log("Ket noi db thanh cong!"))
     .catch(error => console.log(error))
-const PORT = 3002;
+const PORT = 3001;
 app.listen(PORT, () => {
     console.log("Server của bạn đang chạy cổng", PORT);
 })
