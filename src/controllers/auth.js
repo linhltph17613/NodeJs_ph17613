@@ -4,23 +4,23 @@ import jwt from "jsonwebtoken";
 
 export const register = async (req, res) => {
     const { email, name, password } = req.body
+    console.log(req.body);
+
     try {
         const exitUser = await userSchema.findOne({ email }).exec();
         if (exitUser) {
             res.status(400).json({
                 message: "Tài khoản đã tồn tại!"
-            })
+            });
+            return;
         }
         const user = await new userSchema({ email, name, password }).save()
-        res.json({
-            user: {
-                _id: user._id,
-                name: user.name,
-                password: user.password
-            }
-        })
+        console.log(user)
+
+        res.status(200).json(user)
+        // return;
     } catch (error) {
-        console.log(error)
+        // console.log(error)
         res.status(400).json({
             error: "Không đăng kí được!!"
         })

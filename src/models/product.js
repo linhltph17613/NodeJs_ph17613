@@ -8,8 +8,25 @@ const producSchema = new Schema({
         required: true,
         unique: true
     },
+    image: {
+        type: String,
+        required: true
+    },
     price: {
         type: Number,
+        required: true
+    },
+    desc: {
+        type: String,
+        required: true
+    },
+    weight: {
+        type: Number,
+        required: true
+
+    },
+    demensions: {
+        type: String,
         required: true
     },
     category: {

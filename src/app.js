@@ -7,15 +7,16 @@ import mongoose from "mongoose";
 import productRouter from './routers/products';
 import userRouter from './routers/user';
 import categoryRouter from "./routers/category";
-
-
+import SwaggerUI from 'swagger-ui-express';
+import YAML from 'yamljs'
 
 const app = express();
-
+const swaggerJSDocs = YAML.load('./api.yaml')
 //middleware
 app.use(cors());
 app.use(morgan('tiny'))
 app.use(express.json())
+app.use("/api-docs", SwaggerUI.serve, SwaggerUI.setup(swaggerJSDocs))
 
 //router
 // readdirSync(`${__dirname}/routers`).map(file => app.use("/api", require(`./routers/${file}`)))
