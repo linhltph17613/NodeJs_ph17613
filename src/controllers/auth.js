@@ -65,3 +65,15 @@ export const list = async (req, res) => {
         })
     }
 }
+export const remove = async (req, res) => {
+
+    // res.json(data.filter(item => item.id != req.params.id))
+    try {
+        const user = await userSchema.findOneAndDelete({ _id: req.params.id }).exec();
+        res.json(user);
+    } catch (error) {
+        res.status(400).json({
+            error: "Xóa người dùng thành công"
+        })
+    }
+}

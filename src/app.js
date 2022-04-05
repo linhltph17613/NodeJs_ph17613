@@ -20,7 +20,7 @@ app.use("/api-docs", SwaggerUI.serve, SwaggerUI.setup(swaggerJSDocs))
 
 //router
 // readdirSync(`${__dirname}/routers`).map(file => app.use("/api", require(`./routers/${file}`)))
-app.use("/api", productRouter)
+app.use("/api/products", productRouter)
 app.use("/api", userRouter)
 app.use("/api", categoryRouter)
 
@@ -37,7 +37,7 @@ app.use("/api", categoryRouter)
 mongoose.connect("mongodb://localhost:27017/we16310")
     .then(() => console.log("Ket noi db thanh cong!"))
     .catch(error => console.log(error))
-const PORT = 3001;
+const PORT = 8000;
 app.listen(PORT, () => {
     console.log("Server của bạn đang chạy cổng", PORT);
 })

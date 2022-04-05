@@ -14,10 +14,12 @@ export const create = async (req, res) => {
     // res.json(data);
     try {
         const product = await new producSchema(req.body).save();
+        console.log(product);
         res.json(product)
     } catch (error) {
+        console.log("error", error)
         res.status(400).json({
-            error: "Không thêm đc sản phẩm"
+            error: "Không thêm đc sản phẩm" + error
         })
     }
 
@@ -33,6 +35,7 @@ export const list = async (req, res) => {
     }
 }
 export const getAll = async (req, res) => {
+    console.log(req.params.id);
 
     // res.json(data.find(item => item.id == req.params.id))
     try {
@@ -60,10 +63,10 @@ export const update = async (req, res) => {
 
     // const result = (data.find(item => item.id == req.params.id ? req.body : item))
     // res.json(result)
-    const condition = { id: req.params.id }
+    const condition = { _id: req.params.id }
     const update = req.body;
     try {
-        const product = await producSchema.findOneAndUpdate({ condition, update }).exec();
+        const product = await producSchema.findOneAndUpdate(condition, update).exec();
         res.json(product);
     } catch (error) {
         res.status(400).json({

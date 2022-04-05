@@ -9,15 +9,15 @@ const router = Router();
 
 
 // router.get('/products', checkAuth, list)
-router.get('/products', list)
+router.get('/:id', getAll)
+router.get('/', list)
 
 
-// router.post('/products/:userId', requireSignin, isAuth, isAdmin, create);
-router.post('/products', create);
+// router.post('/:userId', requireSignin, isAuth, isAdmin, create);
+router.post('/', create);
 
-router.get('/product/:id', checkAuth, getAll)
-router.delete('/product/:id', checkAuth, remove)
-router.put('/product/:id', checkAuth, update)
+router.delete('/:id', checkAuth, remove)
+router.put('/:id', /* checkAuth */ update)
 
 router.param('userId', userById)
 export default router;

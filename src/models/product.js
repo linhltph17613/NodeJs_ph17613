@@ -31,7 +31,7 @@ const producSchema = new Schema({
     },
     category: {
         type: ObjectId,
-        ref: "Category"
+        ref: "Category",
     }
 }, { timestamps: true })
 export default mongoose.model("product", producSchema)
