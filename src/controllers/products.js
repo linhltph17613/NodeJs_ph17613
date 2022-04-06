@@ -74,3 +74,23 @@ export const update = async (req, res) => {
         })
     }
 }
+// const productPage = async (req, res, next) => {
+//     const perPage = 9; // số lượng sản phẩm xuất hiện trên 1 page
+//     const page = req.params.page || 1;
+//     const Product = await producSchema.find({}).exec();
+//     try {
+//         Product
+//             .find() // find tất cả các data
+//             .skip((perPage * page) - perPage) // Trong page đầu tiên sẽ bỏ qua giá trị là 0
+//             .limit(perPage)
+//             .exec((err, products) => {
+//                 Product.countDocuments((err, count) => { // đếm để tính có bao nhiêu trang
+//                     if (err) return next(err);
+//                     res.send(products) // Trả về dữ liệu các sản phẩm theo định dạng như JSON, XML,...
+//                 });
+//             });
+//     } catch (error) {
+//         console.log("error", error);
+//     }
+
+// }
