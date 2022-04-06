@@ -18,16 +18,13 @@ const producSchema = new Schema({
     },
     desc: {
         type: String,
-        required: true
     },
     weight: {
         type: Number,
-        required: true
 
     },
     demensions: {
         type: String,
-        required: true
     },
     category: {
         type: ObjectId,
