@@ -74,12 +74,57 @@ export const update = async (req, res) => {
         })
     }
 }
-// const productPage = async (req, res, next) => {
-//     const perPage = 9; // số lượng sản phẩm xuất hiện trên 1 page
+
+export const SearchPro = async (req, res) => {
+    // console.log(req.query);
+    // const product_search = req.query.name // lấy giá trị của key name trong query parameters gửi lên
+    // console.log(2);
+    try {
+        const result = await producSchema
+
+            .find({
+                name: {
+                    $regex: new RegExp(req.query.q)
+                }
+            })
+        res.json(result);
+    } catch (error) {
+        console.log("lỗi", error);
+
+    }
+
+}
+export const PaginationProduct = async (req, res) => {
+    const perPage = 6; // số lượng sản phẩm xuất hiện trên 1 page
+    const page = req.params.page || 1;
+    console.log(page);
+
+    const Product = producSchema;
+    // console.log(Product);
+    try {
+        await Product
+            .find() // find tất cả các data
+            .skip((perPage * page) - perPage) // Trong page đầu tiên sẽ bỏ qua giá trị là 0
+            .limit(perPage)
+            .exec((err, products) => {
+                Product.countDocuments((err, count) => { // đếm để tính có bao nhiêu trang
+                    if (err) return next(err);
+                    res.send(products) // Trả về dữ liệu các sản phẩm theo định dạng như JSON, XML,...
+                });
+            });
+    } catch (error) {
+        console.log("lỗi", error);
+    }
+}
+// const Pagination = async (req, res, next) => {
+//     const perPage = 6; // số lượng sản phẩm xuất hiện trên 1 page
 //     const page = req.params.page || 1;
-//     const Product = await producSchema.find({}).exec();
+//     console.log(page);
+
+//     const Product = producSchema;
+//     // console.log(Product);
 //     try {
-//         Product
+//         await Product
 //             .find() // find tất cả các data
 //             .skip((perPage * page) - perPage) // Trong page đầu tiên sẽ bỏ qua giá trị là 0
 //             .limit(perPage)
@@ -90,7 +135,7 @@ export const update = async (req, res) => {
 //                 });
 //             });
 //     } catch (error) {
-//         console.log("error", error);
+//         console.log("lỗi", error);
 //     }
 
-// }
+// };
