@@ -16,10 +16,10 @@ export const requireSignin = expressJWT({
 })
 
 export const isAuth = (req, res, next) => {
-    const status = req.profile._id == req.auth._id
+    const status = req.profile._id == req.auth._id;
     if (!status) {
         res.status(401).json({
-            message: "Bạn không có quyền truy cập"
+            message: "Ban khong co quyen truy cap"
         })
     }
     next();

@@ -16,6 +16,7 @@ export const create = async (req, res) => {
         const product = await new producSchema(req.body).save();
         console.log(product);
         res.json(product)
+
     } catch (error) {
         console.log("error", error)
         res.status(400).json({
@@ -109,7 +110,7 @@ export const PaginationProduct = async (req, res) => {
             .exec((err, products) => {
                 Product.countDocuments((err, count) => { // đếm để tính có bao nhiêu trang
                     if (err) return next(err);
-                    res.send(products) // Trả về dữ liệu các sản phẩm theo định dạng như JSON, XML,...
+                    res.send(products) // Trả về dữ liệu các sản phẩm theo định dạng 
                 });
             });
     } catch (error) {

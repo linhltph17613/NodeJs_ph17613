@@ -16,7 +16,9 @@ router.get('/', list)
 
 router.get('/new/:page', PaginationProduct);
 
-// router.post('/:userId', requireSignin, isAuth, isAdmin, create);
+// router.post('/:userId', requireSignin, isAuth, isAdmin, () => {
+//     console.log("abc");
+// });
 // router.post('/:userId', requireSignin, create);
 
 router.post('/', create);

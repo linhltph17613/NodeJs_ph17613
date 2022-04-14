@@ -15,6 +15,13 @@ export const register = async (req, res) => {
             return;
         }
         const user = await new userSchema({ email, name, password }).save()
+        res.json({
+            user: {
+                _id: user._id,
+                email: user.email,
+                name: user.name
+            }
+        });
         console.log(user)
 
         res.status(200).json(user)
